@@ -210,3 +210,28 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
+
+//EmailJS
+function sendMail() {
+  let parms = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    subject: document.getElementById("subject").value,
+    message: document.getElementById("message").value
+  }
+  if (document.getElementById("name").value == "" || 
+        document.getElementById("email").value == "" || 
+          document.getElementById("subject").value == "" || 
+            document.getElementById("message").value == ""){
+    alert("Please complete the form with a valid email so I can contact you.");
+  } else {
+    emailjs.send("service_afql87s", "template_sq914d6", parms).then(alert("Email has been sent."));
+
+    //Clear text fields
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("subject").value = "";
+    document.getElementById("message").value = "";
+  }
+  
+}
